@@ -1,0 +1,38 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "emailAddress": {
+      "$id": "/properties/emailAddress",
+      "type": "string",
+      "title": "The Emailaddress Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "bobevans@someplace.com"
+      ]
+    },
+    "firstName": {
+      "$id": "/properties/firstName",
+      "type": "string",
+      "title": "The Firstname Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Bob"
+      ]
+    },
+    "lastName": {
+      "$id": "/properties/lastName",
+      "type": "string",
+      "title": "The Lastname Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Evans"
+      ]
+    }
+  }
+}
