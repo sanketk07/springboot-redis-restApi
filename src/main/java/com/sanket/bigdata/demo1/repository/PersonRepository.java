@@ -8,15 +8,15 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.repository.CrudRepository;
 
-import com.sanket.bigdata.demo1.domain.Person;
+import com.sanket.bigdata.demo1.domain.Plan;
 
-public class PersonRepository implements CrudRepository<Person, String>{
+public class PersonRepository implements CrudRepository<Plan, String>{
 
 	public static final String PERSONS_KEY = "persons";
 
-	private final HashOperations<String, String, Person> hashOps;
+	private final HashOperations<String, String, Plan> hashOps;
 
-	public PersonRepository(RedisTemplate<String, Person> redisTemplate) {
+	public PersonRepository(RedisTemplate<String, Plan> redisTemplate) {
 		this.hashOps = redisTemplate.opsForHash();
 	}
 
@@ -31,13 +31,13 @@ public class PersonRepository implements CrudRepository<Person, String>{
 	}
 
 	@Override
-	public void delete(Person person) {
+	public void delete(Plan person) {
 		hashOps.delete(PERSONS_KEY,  person.getEmailAddress());
 	}
 
 	@Override
-	public void delete(Iterable<? extends Person> persons) {
-		for (Person p : persons) {
+	public void delete(Iterable<? extends Plan> persons) {
+		for (Plan p : persons) {
 			delete(p);
 		}
 	}
@@ -57,29 +57,29 @@ public class PersonRepository implements CrudRepository<Person, String>{
 	}
 
 	@Override
-	public Iterable<Person> findAll() {
+	public Iterable<Plan> findAll() {
 		return hashOps.values(PERSONS_KEY);
 	}
 
 	@Override
-	public Iterable<Person> findAll(Iterable<String> emailAddresses) {
+	public Iterable<Plan> findAll(Iterable<String> emailAddresses) {
 		return hashOps.multiGet(PERSONS_KEY, convertIterableToList(emailAddresses));
 	}
 
 	@Override
-	public Person findOne(String emailAddress) {
+	public Plan findOne(String emailAddress) {
 		return hashOps.get(PERSONS_KEY, emailAddress);
 	}
 
 	@Override
-	public <S extends Person> S save(S person) {
+	public <S extends Plan> S save(S person) {
 		hashOps.put(PERSONS_KEY, person.getEmailAddress(), person);
 
 		return person;
 	}
 
 	@Override
-	public <S extends Person> Iterable<S> save(Iterable<S> persons) {
+	public <S extends Plan> Iterable<S> save(Iterable<S> persons) {
 		List<S> result = new ArrayList();
 
 		for(S entity : persons) {

@@ -8,25 +8,25 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import com.sanket.bigdata.demo1.domain.Person;
+import com.sanket.bigdata.demo1.domain.Plan;
 import com.sanket.bigdata.demo1.repository.PersonRepository;
 
 @Configuration
 public class RedisConfig {
 
 	@Bean
-	public PersonRepository repository(RedisTemplate<String, Person> redisTemplate) {
+	public PersonRepository repository(RedisTemplate<String, Plan> redisTemplate) {
 		return new PersonRepository(redisTemplate);
 	}
 
 	@Bean
-	public RedisTemplate<String, Person> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-		RedisTemplate<String, Person> template = new RedisTemplate();
+	public RedisTemplate<String, Plan> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+		RedisTemplate<String, Plan> template = new RedisTemplate();
 
 		template.setConnectionFactory(redisConnectionFactory);
 
 		RedisSerializer<String> stringSerializer = new StringRedisSerializer();
-		RedisSerializer<Person> personSerializer = new Jackson2JsonRedisSerializer<>(Person.class);
+		RedisSerializer<Plan> personSerializer = new Jackson2JsonRedisSerializer<>(Plan.class);
 
 		template.setKeySerializer(stringSerializer);
 		template.setValueSerializer(personSerializer);

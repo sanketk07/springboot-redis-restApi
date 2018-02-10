@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sanket.bigdata.demo1.domain.Person;
+import com.sanket.bigdata.demo1.domain.Plan;
 
 @Component
 public class PersonRepositoryPopulator implements ApplicationListener<ContextRefreshedEvent>, ApplicationContextAware {
@@ -55,7 +55,7 @@ public class PersonRepositoryPopulator implements ApplicationListener<ContextRef
         Object entity = getEntityFromResource(sourceData);
 
         if (entity instanceof Collection) {
-            for (Person person : (Collection<Person>) entity) {
+            for (Plan person : (Collection<Plan>) entity) {
                 if (person != null) {
                     repository.save(person);
                 }
