@@ -22,8 +22,7 @@ public class Demo1Application {
 		File schemaFile = new File("/Users/sanketkumar/Downloads/demo1/src/main/resources/schema.json");
 		File jsonFile = new File("/Users/sanketkumar/Downloads/demo1/src/main/resources/data.json");
 		
-		/*
-		 * curl -H "Content-Type: application/json" -X PUT  -d /Users/sanketkumar/Downloads/demo1/src/main/resources/data.json http://localhost:8080/persons
+		/* curl -H "Content-Type: application/json" -X PUT  -d /Users/sanketkumar/Downloads/demo1/src/main/resources/data.json http://localhost:8080/persons
 		 * */
 
 		try {
